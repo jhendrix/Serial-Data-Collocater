@@ -1,0 +1,19 @@
+======================================================
+= ATTRIBUTIONS
+======================================================
+
+======================================================
+Qt is available under the LGPL (version 2.1).
+
+The Qt Toolkit is Copyright (C) 2013 Digia Plc andor its subsidiary(-ies) and other contributors.
+
+Contact httpwww.qt-project.orglegal
+
+Reference GNU Lesser General Public License, version 2.1
+
+==========================================================
+FlatIcon
+
+binary-code Icon designed by Freepik (www.freepik.com) from www.flaticon.com
+
+License information: http://file000.flaticon.com/downloads/license/license.pdf
