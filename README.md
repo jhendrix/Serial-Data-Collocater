@@ -13,3 +13,4 @@ Potential improvements:
 6.  Provide option to save the status log to a file
 7.  Provide controls for a limited capture time - either by nbytes or by time period
 8.  Provide a KB/s calculation and display
+9.  Implement Wait Cursor after pushing Start or Stop button.
