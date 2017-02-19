@@ -61,6 +61,7 @@ private:
    QString m_fileStr;
    uint32_t m_baudRate = 921600;
    uint32_t m_bitsWd = 8;
+   uint32_t m_dataWaitMs = 500;
    QSerialPort::StopBits m_stopBits    = QSerialPort::OneStop;
    QSerialPort::Parity m_parity        = QSerialPort::NoParity;
    QSerialPort::FlowControl m_flowCtrl = QSerialPort::NoFlowControl;

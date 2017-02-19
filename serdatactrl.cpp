@@ -26,7 +26,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <QThread>
 #include <QtConcurrent/QtConcurrent>
 
-
 SerDataCtrl::SerDataCtrl(QObject *parent) : QObject(parent)
 {
 
@@ -52,7 +51,6 @@ void SerDataCtrl::stream(void)
    m_pPort->setStopBits(m_stopBits);
    m_pPort->setReadBufferSize(0);
 
-
    m_pPort->close();
    m_pPort->clearError();
 
@@ -77,11 +75,11 @@ void SerDataCtrl::stream(void)
          emit StreamStart();
       }
 
-      //while not done and no fatal errors, read and write
+      // while not done and no fatal errors, read and write
       while(!m_stop && retVal)
       {
          m_stopped = false;
-         if(m_pPort->waitForReadyRead(25))
+         if(m_pPort->waitForReadyRead(m_dataWaitMs))
          {
             QByteArray ary = m_pPort->readAll();
             if(!ary.isEmpty())
@@ -92,7 +90,7 @@ void SerDataCtrl::stream(void)
             }
             else
             {
-               // sleep a little
+               // report any errors
                if(QSerialPort::NoError != m_pPort->error())
                {
                   emit(StringOut(m_pPort->errorString()));
@@ -102,6 +100,7 @@ void SerDataCtrl::stream(void)
          }
          else
          {
+            // report any errors
             QSerialPort::SerialPortError err = m_pPort->error();
             if(QSerialPort::NoError != err && QSerialPort::TimeoutError != err)
             {
@@ -111,7 +110,6 @@ void SerDataCtrl::stream(void)
          }
       }
    }
-
 
    m_pPort->close();
    file.close();
