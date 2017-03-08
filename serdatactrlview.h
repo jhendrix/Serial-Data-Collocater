@@ -51,6 +51,7 @@ private slots:
    void OnPortSelActivated();
    void OnPortSelected(int boxIndex);
    void OnBaudSelected(int idx);
+   void OnBaudEditingFinished(void);
    void OnStart(void);
    void OnStop(void);
    void OnBitsSelected(int idx);

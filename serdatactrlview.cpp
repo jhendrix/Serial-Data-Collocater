@@ -92,6 +92,7 @@ void SerDataCtrlView::addWidgets()
    m_baudCombo->addItem(tr("115200"), QSerialPort::Baud115200);
    m_baudCombo->addItem(tr("9600"), QSerialPort::Baud9600);
    connect(m_baudCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(OnBaudSelected(int)));
+   connect(m_baudCombo->lineEdit(), SIGNAL(editingFinished()), SLOT(OnBaudEditingFinished()));
 
 
    m_stopCombo = new QComboBox(this);
@@ -450,3 +451,24 @@ void SerDataCtrlView::addMsg(const QString &str)
    }
 }
 
+void SerDataCtrlView::OnBaudEditingFinished()
+{
+#if 1
+   bool ok;
+   uint32_t baud;
+   QString str = m_baudCombo->lineEdit()->text();
+
+   // Check if text exists, if not, add it
+   baud = str.toUInt(&ok);
+   int idx = m_baudCombo->findText(str);
+   if(idx == -1)
+   {
+      m_baudCombo->insertItem(0, str, baud);
+      m_baudCombo->setCurrentIndex(0);
+   }
+   else
+   {
+      m_baudCombo->setCurrentIndex(idx);
+   }
+#endif
+}
